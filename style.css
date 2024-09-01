@@ -6,13 +6,15 @@
   --soft-voilet: #aa5cdb;
 
   --Nutral-white-heading: #ffffff;
-  --Slightly-transparent-white: hsla(0, 0%, 100%, 0.75);
+  --Slightly-transparent-white-main-paragraph: hsla(0, 0%, 100%, 0.75);
 
-  --Slightly-transparent-white: hsla(0, 0%, 100%, 0.6);
+  --Slightly-transparent-white-stat-headings: hsla(0, 0%, 100%, 0.6);
 
-  --fs: 0.938rem;
+  --fs-body: 0.85rem;
   --fs-heading: 1.5rem;
-  --ff: "Lexend Deca" "Lexend Deca", sans-serif;
+  --fs-stat: 1.5rem;
+  --ff-heading: "Lexend Deca" sans-serif;
+  --ff-body: "Lexend Deca", sans-serif;
 
   --fw-400: 400;
   --fw-700: 700;
@@ -27,118 +29,126 @@
 }
 
 body {
-  font-size: var(--fs);
+  font-family: var(--ff-body);
+  min-height: 100vh;
+  font-size: var(--fs-body);
   background-color: var(--primary-Very-dark-blue);
-  font-family: var(--ff);
-  letter-spacing: 1.5;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-
 .wrapper {
-  min-height: 500px;
-  margin-top: 100px;
+  max-width: 70vw;
+  margin: 0 auto;
 }
 
 .card-container {
-  width: 52vw;
-  height: 252px;
-  display: flex;
-  flex-direction: row;
-
   background-color: var(--Dark-desaturated-blue);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 2rem;
 }
-.left-card-component {
-  padding: 20px;
-  align-items: center;
-}
-.card-title {
-  color: var(--Nutral-white-heading);
-  font-size: var(--fs-heading);
-  font-family: var(--ff);
-  font-weight: var(--fw-700);
-  margin-bottom: 20px;
-}
-span {
-  color: var(--soft-voilet);
-}
-
-.card-desc {
-  color: var(--Slightly-transparent-white);
-  margin-bottom: 30px;
-}
-.profile-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 25px;
-}
-.profile-count h3 {
-  color: var(--Nutral-white-heading);
-  font-weight: var(--fw-700);
-  letter-spacing: 1.5;
-}
-
-.profile-count p {
-  color: var(--Slightly-transparent-white);
-  letter-spacing: 1.5;
-}
-.right-card-component img {
+.image-component {
   position: relative;
-  height: 100%;
-  width: 22vw;
 }
-.right-card-component img::after {
+.image-component img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.image-component::after {
+  position: absolute;
   content: "";
   height: 100%;
   width: 100%;
-  background: hsla(277, 98%, 48%, 0.473);
-  position: absolute;
+  background-color: hsl(277, 64%, 61%, 0.6);
   inset: 0;
 }
-
-@media screen and (max-width: 877px) {
-  body {
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .wrapper {
-    max-width: 350px;
-    padding: 15px;
-  }
-  .card-container {
-    height: 70vh;
-    width: 100%;
-    flex-direction: column;
-    padding: 10px;
-  }
-  .card-desc {
-    margin-bottom: 20px;
-  }
-  .right-card-component img {
-    height: 150px;
-    width: 100%;
-  }
+.text-component {
+  padding: 2rem;
 }
 
-@media screen and (max-width: 300px) {
+.title {
+  color: var(--Nutral-white-heading);
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-700);
+  padding-bottom: 3rem;
+}
+
+.title span {
+  color: var(--soft-voilet);
+}
+
+.desc {
+  color: var(--Slightly-transparent-white-main-paragraph);
+  line-height: 1.5;
+}
+
+.stat-box {
+  display: flex;
+  padding-top: 4rem;
+  gap: 20px;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.stat-box p.stat-number {
+  color: var(--Nutral-white-heading);
+  font-size: var(--fs-stat);
+  font-weight: var(--fw-700);
+  margin-bottom: 0.2rem;
+}
+.stat-box p {
+  color: var(--Slightly-transparent-white-stat-headings);
+}
+
+@media only screen and(max-width:768px) and(min-width:426px) {
   body {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-size: 12px;
+  }
+  .text-component {
+    padding: 12%;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .stat-box p {
+    padding-top: 10px;
+    justify-content: space-between;
+  }
+  /* .stat-number {
+    font-size: 12px;
+  }
+  .stat-box p {
+    font-size: 12px;
+  } */
+}
+@media only screen and (max-width: 425px) {
+  body {
+    text-align: center;
   }
   .card-container {
-    height: 100dvh;
+    grid-template-columns: 1fr;
   }
-  .profile-info {
+  .image-component {
+    order: -1;
+  }
+  .text-component {
+    padding: 12% 8%;
+  }
+  .title {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+  .stat-box {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding-top: 20px;
+  }
+  .stat-box .stat-number {
+    font-size: 12px;
+  }
+  .stat-box div {
+    margin-top: 1.2rem;
   }
 }
